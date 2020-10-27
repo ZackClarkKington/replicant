@@ -1,0 +1,30 @@
+syntax = "proto3";
+package processes;
+
+option go_package = "zack.exchange/replicant/processes";
+
+message Election {
+    int64 Ballot = 1;
+    string ID = 2;
+}
+
+message Proposal {
+    int64 Ballot = 1;
+    string ID = 2;
+    string Action = 3;
+    bytes Operand = 4;
+}
+
+message HistoricalRecord {
+    int64 Ballot = 1;
+    string Result = 2;
+}
+
+message Vote {
+    bool Accepted = 1;
+    repeated HistoricalRecord Records = 2;
+}
+
+message ProposalResult {
+    string Result = 1;
+}
